@@ -24,8 +24,8 @@ function generateRandomString(length) {
 const dbConfig = {
     host: 'localhost', // 데이터베이스 호스트 주소
     user: 'root', // 데이터베이스 사용자 이름
-    password: '1207', // 데이터베이스 사용자 비밀번호
-    database: 'matchingus_db' // 데이터베이스 이름
+    password: '비밀번호', // 데이터베이스 사용자 비밀번호
+    database: 'matching-us' // 데이터베이스 이름
   };
   
   // MySQL 데이터베이스와 연결 생성
@@ -105,7 +105,25 @@ app.get('/api/protectedRoute', authenticateToken, (req, res) => {
     // JWT 검증을 통과한 경우, req.user 객체를 통해 사용자 정보에 접근할 수 있습니다.
     res.json({ message: 'Protected route accessed successfully!', user: req.user });
   });
+
+
+
+
+// 게시물 추가 API 엔드포인트
+app.post('/api/addPost', (req, res) => {
+  const { userID, matchingTitle, matchingContent, matchingType } = req.body;
+
+  const newPost = { userID, matchingTitle, matchingContent, matchingType };
   
+  connection.query('INSERT INTO posts SET ?', newPost, (err, result) => {
+      if (err) {
+          console.error('Error adding the post:', err.message);
+          res.status(500).json({ error: 'Failed to add the post' });
+      } else {
+          res.status(201).json({ message: 'Post added successfully' });
+      }
+  });
+});
 
 const port = 3001;
 app.listen(port, () => {
