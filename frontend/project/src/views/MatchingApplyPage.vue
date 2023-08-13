@@ -66,11 +66,11 @@
             <div class="radio-container">
               <!-- 문제점 1: 1-2인 매칭, 3인 이상 텍스트 스타일 변경 -->
               <label class="radio-label">
-                <input type="radio" id="matching-type-1" name="matchingType" value="1-2" v-model="matchingType">
+                <input type="radio" id="matching-type-1" name="matchingType" value="1-2인 매칭" v-model="matchingType">
                 <span class="bold-purple">1-2인 매칭</span>
               </label>
               <label class="radio-label">
-                <input type="radio" id="matching-type-2" name="matchingType" value="3+" v-model="matchingType">
+                <input type="radio" id="matching-type-2" name="matchingType" value="3인 이상 매칭" v-model="matchingType">
                 <span class="bold-purple">3인 이상 매칭</span>
               </label>
             </div>
@@ -115,21 +115,52 @@ export default {
       resultMessage: '', // To display the result message
       resultMessageColor: '', 
     };
-  },
+  
+},
   methods: {
-    applyMatching() {
+    async applyMatching() {
       // 모든 필드가 채워져 있는지 확인
       if (
-        this.matchingType !== '' &&
-        this.matchingTitle.trim() !== '' &&
-        this.matchingContent.trim() !== ''
+          this.matchingType !== '' &&
+          this.matchingTitle.trim() !== '' &&
+          this.matchingContent.trim() !== ''
       ) {
-        this.resultMessage = '신청되었습니다!';
-        this.resultMessageColor = 'green'; // 신청 성공 메시지의 색상을 초록색으로 설정
-        this.$refs.myForm.reset(); // 성공적으로 제출한 후 폼 초기화
-      } else {
-        this.resultMessage = '빈 입력란이 있습니다.';
-        this.resultMessageColor = 'red'; // 실패 메시지의 색상을 빨간색으로 설정
+          
+const user = JSON.parse(localStorage.getItem('user'));
+const userID = user ? user.id : null;
+
+const postData = {
+              matchingType: this.matchingType,
+              matchingTitle: this.matchingTitle,
+              matchingContent: this.matchingContent,
+              userID: userID  // You might also need to send the userID
+          };
+
+          // Send the post data to the server
+          try {
+            const response = await fetch("http://localhost:3001/api/addPost", {
+              method: 'POST',
+              headers: { 
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(postData)
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            alert(data.message);
+            this.resultMessage = '신청되었습니다!';
+            this.resultMessageColor = 'green';
+            this.$refs.myForm.reset();
+            } else {
+              const errorData = await response.json();
+              alert(errorData.error);
+              this.resultMessage = '매칭 신청에 실패했습니다.';
+              this.resultMessageColor = 'red';
+              }
+          } catch (error){
+            console.error("오류", error);
+          }
       }
     },
 
