@@ -192,6 +192,11 @@ export default {
       // 회원가입이 성공적으로 이루어진 경우
       const data = await response.json();
       alert(data.message); // 백엔드에서 전달한 메시지를 알림으로 표시합니다.
+
+      this.$router.push({
+        path: '/LoginPage',
+        query: { name: this.name } // Pass the user's name as a query parameter
+      });
     } else {
       // 회원가입이 실패한 경우
       const errorData = await response.json();

@@ -14,7 +14,7 @@
             </div>
             <div class="navbar_right">
                 <div class="navbar_welcome">
-                    <div class="welcome">환영합니다, <strong class="name">김혜빈</strong>님! <i class="fa-regular fa-face-smile"></i></div>
+                    <div class="welcome">환영합니다, <strong class="name">{{ user.name }}</strong>님! <i class="fa-regular fa-face-smile"></i></div>
                 </div>
                 <!-- 로그아웃 버튼을 form 태그 밖으로 이동 -->
                 <button @click="goToLoginPage" class="btn btn-outline-success" style="color: #9370DB; text-decoration: none;">
@@ -89,6 +89,11 @@
 
 <script>
 export default {
+  computed: {
+    user() {
+      return JSON.parse(localStorage.getItem('user')) || {};
+    }
+  },  
   methods: {
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");

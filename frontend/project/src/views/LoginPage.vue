@@ -75,7 +75,9 @@ export default {
           localStorage.setItem('token', token);
 
           // 로그인에 성공하면 Main 페이지로 이동합니다.
-          this.$router.push("/MainPage");
+          this.$router.push({
+            path: '/MainPage',
+          });
         } else {
           // 로그인이 실패한 경우, 백엔드에서 온 에러 메시지를 보여줍니다.
           const { error } = response.data;
