@@ -204,11 +204,16 @@ const postData = {
 body {
     margin: 0;
     background-color: white;
+    font-family: 'jua', sans-serif;
 }
 
+#matchingContent {
+  font-family: 'jua', sans-serif;
+}
 .MatchingUs {
     font-size: 28px;
     color: #9370DB;
+    font-family: 'jua', sans-serif;
 }
 
 /* 이미지의 크기를 조절하는 .img 클래스에 스타일 추가 */
@@ -225,10 +230,12 @@ body {
     align-items: center;
     background-color: #F6E6F6;
     padding: 8px 12px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo {
     font-size: 24px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo .logo_image {
@@ -241,6 +248,7 @@ body {
     margin-right: 30px; 
     margin-top: 10px;
     font-weight: 400;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_welcome .welcome {
@@ -252,6 +260,7 @@ body {
     /* color: #9370DB; */
     border-color: #9370DB; 
     font-weight: 500;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_right {
@@ -321,18 +330,22 @@ body {
   border-radius: 8px;
   background-color: #fff;
   width: 500px;
+  margin-left:350px;
+  margin-right: 150px;
 }
 
 .section-title {
   color: #9370DB;
   margin-bottom: 20px;
   font-size: 24px;
+  font-family: 'jua', sans-serif;
 }
 
 .bold-purple {
   /* 문제점 1: 보라색 굵은 글씨 스타일 */
   color: #9370db;
   font-weight: bold;
+  font-family: 'jua', sans-serif;
 }
 
 .matching-form {
@@ -363,6 +376,7 @@ body {
   margin-right: 10px;
   color: #9370db;
   font-weight: bold;
+  font-family: 'jua', sans-serif;
 }
 
 
@@ -384,6 +398,7 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'jua', sans-serif;
 }
 
 
@@ -391,11 +406,14 @@ body {
   margin-top: 10px;
   color: #008000; /* Green color for successful message */
   font-weight: bold;
+  font-family: 'jua', sans-serif;
 }
 
 .content-container {
   display: flex;
   justify-content: center; /* 수평으로 가운데 정렬 */
+  margin-left: 350px;
+  margin-right: 150px;
   align-items: flex-start;
   margin-top: 100px;
 }
@@ -416,6 +434,7 @@ textarea {
   font-size: 16px;
   margin-bottom: 15px;
   transition: border-color 0.3s;
+  font-family: 'jua', sans-serif;
 }
 
 input[type="text"],
@@ -429,6 +448,11 @@ textarea {
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+@font-face {
+  font-family: 'jua';
+  src:url(../../public/fonts/font.ttf)
+}
 
 @media screen and (max-width: 768px) {
     .side_nav{

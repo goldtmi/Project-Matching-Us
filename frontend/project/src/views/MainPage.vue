@@ -51,7 +51,7 @@
     <!-- 게시판 카드 -->
     <div class="container">
         <ul class="board-list">
-            <li>
+            <li style="margin-left: 350px;">
                 <img
                     src="/image/love.png"
                     class="card-img-top"
@@ -59,12 +59,12 @@
                 />
                 <div class="card-body">
                     <h5 class="card-title"><strong>1~2인 매칭 게시판</strong></h5>
-                    <p class="card-text">소규모 만남을 원하시는 분들을 위한 게시판입니다.</p>
+                    <p class="card-text">소규모 만남을 원하시는 분들을 위한 게시판입니다. 소개팅을 원하시면 추천!</p>
                     <!-- 매칭 보드 페이지로 이동 -->
-                    <a @click="goToMatchingBoardPage" class="btn btn-lavender">VIEW NOW!</a>
+                    <a @click="goToMatchingBoardPage" class="btn btn-lavender"><strong>VIEW NOW!</strong></a>
                 </div>
             </li>
-            <li>
+            <li style="margin-right: 150px;">
                 <img
                     src="/image/love2.png"
                     class="card-img-top"
@@ -74,7 +74,7 @@
                     <h5 class="card-title"><strong>3인 이상 매칭 게시판</strong></h5>
                     <p class="card-text">3:3 이상의 대규모 만남을 원하시는 분들을 위한 게시판입니다. 과팅/미팅을 즐기고 싶으면 추천!</p>
                     <!-- 매칭 보드 페이지로 이동 -->
-                    <a @click="goToMatchingBoardPage" class="btn btn-lavender">VIEW NOW!</a>
+                    <a @click="goToMatchingBoardPage02" class="btn btn-lavender"><strong>VIEW NOW!</strong></a>
                 </div>
             </li>
         </ul>
@@ -106,6 +106,7 @@ export default {
     goToMatchingApplyDetailPage() {
       this.$router.push("/MatchingApplyDetailPage");
     },
+    
 
     goToLoginPage() {
       this.$router.push("/");
@@ -113,6 +114,9 @@ export default {
     
     goToMatchingBoardPage() {
       this.$router.push("/MatchingBoardPage");
+    },
+    goToMatchingBoardPage02() {
+      this.$router.push("/MatchingBoardPage02");
     },
 
     goToNoticePage() {
@@ -123,9 +127,27 @@ export default {
 </script>
 
 <style scoped>
+
+/* Add these styles to center-align the cards */
+.bar {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.board-list-wrapper {
+  display: flex;
+  justify-content: flex-start; /* 변경: 왼쪽으로 정렬 */
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+  font-family: 'jua', sans-serif;
+}
+
 body {
     margin: 0;
     background-color: white;
+    font-family: 'jua', sans-serif;
 }
 
 .MatchingUs {
@@ -147,10 +169,12 @@ body {
     align-items: center;
     background-color: #F6E6F6;
     padding: 8px 12px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo {
     font-size: 24px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo .logo_image {
@@ -163,33 +187,44 @@ body {
     margin-right: 30px; 
     margin-top: 10px;
     font-weight: 400;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_welcome .welcome {
     color: #9370DB;
     margin-bottom: 10px;
+    font-family: 'jua', sans-serif;
+}
+
+.card-img-top {
+    width: 300px;
+    height: 180px;
 }
 
 .btn.btn-outline-success {
     /* color: #9370DB; */
     border-color: #9370DB; 
     font-weight: 500;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_right {
     display: flex;
     align-items: center;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_right .btn {
     margin-left: auto;
     background-color: #F6E6F6; /* Set the background color to match the navbar background color */
 /* Set the border color to match the text color */
+font-family: 'jua', sans-serif;
 }
 
 .navbar_right .btn a {
 /* Set the text color of the button */
     text-decoration: none;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_right .btn:hover {
@@ -205,12 +240,14 @@ body {
     position: fixed;
     background-color:#E0E0E0; /* 회색으로 변경 */
     padding: 20px;
+    font-family: 'jua', sans-serif;
 }
 
 .basicMenu {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-family: 'jua', sans-serif;
 }
 
 .basicMenu button {
@@ -224,64 +261,65 @@ body {
     color: white; /* 버튼 텍스트 색상 흰색으로 설정 */
     font-size: 16px;
     transition: background-color 0.3s; /* 호버 효과 추가 */
+    font-family: 'jua', sans-serif;
 }
 
 .basicMenu button:hover {
     background-color:#cccccc; /* 호버시 진한 회색으로 변경 */
+    font-family: 'jua', sans-serif;
 }
 
 .menuBar {
   top: 95px; /* Adjust this value according to your fixed navbar height */
+  font-family: 'jua', sans-serif;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
+ display: flex;
+    justify-content: center;
+    align-items: center;
+  font-family: 'jua', sans-serif;
 }
 
 
 /* 매칭 카드 스타일 */
 .board-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 100px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Add some gap between cards */
+  margin-top: 200px;
 }
 
 .board-list li {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 400px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 0 0 calc(50% - 20px);
+  background-color: #F6E6F6; /* Set a light background color */
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
 }
-
 .board-list .btn {
     margin-top: auto;
     background-color: #F6E6F6;
     color: #9370DB; /* 버튼 텍스트 색상 흰색으로 설정 */
     border-color: #F6E6F6;
     width: 100%;
+    font-family: 'jua', sans-serif;
 }
 
 .board-list .btn:hover {
     transform: scale(1.05); 
+    font-family: 'jua', sans-serif;
 }
 
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-/* @font-face {
-    font-family: 'SUIT-Regular';
-    src: url('../assets/fonts/SUIT-ttf/SUIT-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
+@font-face {
+  font-family: 'jua';
+  src:url(../../public/fonts/font.ttf)
+}
 
 @media screen and (max-width: 768px) {
     .side_nav{

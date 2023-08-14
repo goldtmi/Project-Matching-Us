@@ -417,6 +417,7 @@ saveOriginalFormData() {
 body {
     margin: 0;
     background-color: white;
+    font-family: 'jua', sans-serif;
 }
 
 .MatchingUs {
@@ -438,10 +439,12 @@ body {
     align-items: center;
     background-color: #F6E6F6;
     padding: 8px 12px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo {
     font-size: 24px;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_logo .logo_image {
@@ -454,6 +457,7 @@ body {
     margin-right: 30px; 
     margin-top: 10px;
     font-weight: 400;
+    font-family: 'jua', sans-serif;
 }
 
 .navbar_welcome .welcome {
@@ -514,6 +518,7 @@ body {
   color: white; /* 버튼 텍스트 색상 흰색으로 설정 */
   font-size: 16px;
   transition: background-color 0.3s; /* 호버 효과 추가 */
+  font-family: 'jua', sans-serif;
 }
 
 .basicMenu button:hover {
@@ -537,6 +542,8 @@ body {
   border-radius: 8px;
   background-color: #fff;
   width: 500px;
+  margin-left: 350px;
+  margin-right: 150px;
 }
 
 .content h2 {
@@ -544,6 +551,7 @@ body {
   margin-bottom: 20px;
   color: #9370DB;
   font-size: 24px;
+  font-family: 'jua', sans-serif;
 }
 
 /* 폼 요소 스타일 */
@@ -570,6 +578,7 @@ form label {
   margin-bottom: 5px;
   color: #9370DB;
   font-weight: bold;
+  font-family: 'jua', sans-serif;
 }
 
 form button {
@@ -610,6 +619,11 @@ form .form-group label {
 
 form .form-group input[type="radio"] {
   margin-right: 5px; /* 라디오 버튼 사이의 간격을 늘립니다 */
+}
+
+@font-face {
+  font-family: 'jua';
+  src:url(../../public/fonts/font.ttf)
 }
 
 

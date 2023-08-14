@@ -103,11 +103,11 @@
     }
   }
   </script>
-  
-  <style>
+  <style scoped>
   body {
       margin: 0;
       background-color: white;
+      font-family: 'jua', sans-serif;
   }
   
   .MatchingUs {
@@ -129,6 +129,7 @@
       align-items: center;
       background-color: #F6E6F6;
       padding: 8px 12px;
+      font-family: 'jua', sans-serif;
   }
   
   .navbar_logo {
@@ -145,17 +146,20 @@
       margin-right: 30px; 
       margin-top: 10px;
       font-weight: 400;
+      font-family: 'jua', sans-serif;
   }
   
   .navbar_welcome .welcome {
       color: #9370DB;
       margin-bottom: 10px;
+      font-family: 'jua', sans-serif;
   }
   
   .btn.btn-outline-success {
       /* color: #9370DB; */
       border-color: #9370DB; 
       font-weight: 500;
+      font-family: 'jua', sans-serif;
   }
   
   .navbar_right {
@@ -206,6 +210,7 @@
       color: white; /* 버튼 텍스트 색상 흰색으로 설정 */
       font-size: 16px;
       transition: background-color 0.3s; /* 호버 효과 추가 */
+      font-family: 'jua', sans-serif;
   }
   
   .basicMenu button:hover {
@@ -225,9 +230,14 @@
   margin: 120px auto; /* Increase margin-top for more space, and use auto for horizontal centering */
   max-width: 800px; /* Limit the width of the main content */
   margin-left: 250px; /* Add right margin */
+  font-family: 'jua', sans-serif;
 }
   
-  
+@font-face {
+  font-family: 'jua';
+  src:url(../../public/fonts/font.ttf)
+}
+
   @import "~bootstrap/dist/css/bootstrap.min.css";
   @import "~@fortawesome/fontawesome-free/css/all.min.css";
   

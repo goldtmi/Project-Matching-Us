@@ -47,15 +47,14 @@
     </nav>
     </div>
     
-<div class="content">
+    <div class="content">
       <section id="postDetailContainer">
           <div class="post-it male">
-              <h3>포스트잇 제목</h3>
-              <p>인원: 2명</p>
-              <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-              <p>내용: 매칭 상세 내용...</p>
+              <h3>국어국문학과 박서준, 컴퓨터공학과 여학생 1명과 친목 미팅을 구합니다!</h3>
+              <p>인원: 1명</p>
+              <p>학과: 국어국문학과</p>
+              <p>내용: 안녕하세요! 부경대 국어국문학과 박서준입니다. 현재 연기와 학업을 병행하고 있는 4학년 학생이에요. 시스템경영공학부 여학생 1명과 함께 캠퍼스 내에서 즐거운 시간을 보내고 싶어 이렇게 글을 올립니다. 연예계 이야기, 전공, 취미 등 다양한 주제로 대화하며 서로를 알아가고 싶어요. 관심 있으신 분은 댓글로 연락 부탁드립니다. 함께 즐거운 시간 보내요!</p>
           </div>
-          
           <div class="comments-section">
         <!-- <h4>댓글</h4> -->
         <div class="comments-list">
@@ -97,7 +96,7 @@ export default {
 
     // 매칭 현황 페이지로 이동
     goToMatchingStatusPage() {
-      this.$router.push("/MatchingStatusPage");
+      this.$router.push("/MatchingApplyDetailPage");
     },
 
     goToMainPage() {
@@ -232,10 +231,12 @@ body {
 
 .post-it.male {
   background-color: #deeeff; /* Blue color for male */
+  font-family: 'gangwon', sans-serif;
 }
 
 .post-it.female {
   background-color: #ffe4ee; /* Pink color for female */
+  font-family: 'gangwon', sans-serif;
 
 }
 .post-it {
@@ -248,6 +249,7 @@ body {
   box-shadow: 2px 2px 5px #aaa;
   background-color: #fefabc; /* Default yellow color for post-it */
   transition: transform 0.2s; /* Animation for hover effect */
+  font-size: 25px;
 }
 
 
@@ -322,6 +324,11 @@ body {
     .side_nav {
         display: none; /* 사이드바를 숨김 */
     }
+}
+
+@font-face {
+  font-family: 'gangwon';
+  src:url(../../public/fonts/강원교육현옥샘.ttf)
 }
 
 @import "~bootstrap/dist/css/bootstrap.min.css";

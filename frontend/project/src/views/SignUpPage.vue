@@ -1,35 +1,44 @@
 <template>
   <div class="container">
-    <h1 class="container-title">MATCHING US</h1> <!-- 회원가입 제목 추가 -->
+    <span class="MatchingUs">
+                    <img
+                    src="/image/logo.png"
+                    class="img"
+                    alt="매칭어스 로고"
+                />
+                </span>
 
     <form @submit="onSubmit">
-      <label for="studentID">학번 (ID)</label>
-      <input class="input" type="text" id="studentID" required v-model="studentID" @input="validateStudentID">
-      <button class="check-button" type="button" @click="checkDuplicate">중복확인</button>
+      <div class="student-id-container">
+       <label for="studentID">학번 (ID)</label>
+      <input class="input" type="text" id="studentID" required v-model="studentID" @input="validateStudentID" style="margin-left: 18px">
+      <button class="check-button" type="button" style="margin-left: 8px" @click="checkDuplicate">중복 </button>
+      </div>
+     
       <br>
 
       <label for="password">비밀번호</label>
-      <input class="input" type="password" id="password" required v-model="password">
+      <input class="input" type="password" id="password" required v-model="password" style="margin-left: 18px" >
       <br>
 
       <label for="passwordVerify">비밀번호 확인</label>
-      <input type="password" id="passwordVerify" v-model="passwordVerify" required @input="validatePassword">
+      <input type="password" id="passwordVerify" v-model="passwordVerify" required @input="validatePassword" style="margin-left: 18px">
       <br>
-
+      <div class="student-id-container">
       <label for="name">이름</label>
-      <input class="input" type="text" id="name" v-model="name" required>
+      <input class="input" type="text" id="name" v-model="name" required style="margin-left: 18px " >
       <br>
-
+</div>
       <div class="gender-group"> <!-- 성별 그룹을 나타내는 div 추가 -->
         <label for="male">남자</label>
-        <input type="radio" id="male" name="gender" v-model="selectedGender" value="male">
+        <input type="radio" id="male" name="gender" v-model="selectedGender" value="male" style="margin-left: 18px">
         <label for="female">여자</label>
-        <input type="radio" id="female" name="gender" v-model="selectedGender" value="female">
+        <input type="radio" id="female" name="gender" v-model="selectedGender" value="female" style="margin-left: 8px">
       </div>
       <br> 
 
       <label for="residence">부산광역시 거주지 (학기중 거주지)</label>
-      <select id="residence" v-model="selectedResidence">
+      <select id="residence" v-model="selectedResidence" style="margin-left: 18px">
         <!-- 부산광역시 구들을 옵션으로 추가 -->
         <option value="중구">중구</option>
         <option value="서구">서구</option>
@@ -52,7 +61,7 @@
       <br>
 
       <label for="age">출생연도</label>
-      <select id="age" v-model="selectedBirthYear">
+      <select id="age" v-model="selectedBirthYear" style="margin-left: 18px">
         <option value="2004">2004년생</option>
         <option value="2003">2003년생</option>
         <option value="2002">2002년생</option>
@@ -67,7 +76,7 @@
       <br>
 
       <label for="college">단과대학</label>
-      <select id="college" v-model="selectedCollege" @change="updateDepartments">
+      <select id="college" v-model="selectedCollege" @change="updateDepartments" style="margin-left: 18px">
         <!-- 단과대학 옵션들을 추가 -->
         <option value="공과대학">공과대학</option>
         <option value="인문사회과학대학">인문사회과학대학</option>
@@ -82,14 +91,14 @@
       <br>
 
       <label for="department">소속학부</label>
-      <select id="department" v-model="selectedDepartment">
+      <select id="department" v-model="selectedDepartment" style="margin-left: 18px">
         <!-- 초기에는 공과대학에 해당되는 소속학과만 보이도록 설정 -->
         <option v-for="department in departments" :key="department" :value="department">{{ department }}</option>
       </select>
       <br>
 
       <label for="email">학교 이메일</label>
-      <input class="input" type="email" id="email" name="email" v-model="email" required pattern=".+@pknu\.ac\.kr" title="부경대학교 이메일로 입력해주세요 (예: example@pknu.ac.kr)">
+      <input class="input" type="email" id="email" name="email" style="margin-left: 18px" v-model="email" required pattern=".+@pukyong|pknu\.ac\.kr" title="부경대학교 이메일로 입력해주세요 (예: example@pknu.ac.kr 또는example+@pukyong.ac.kr)">
       <br>
 
       <input @click="validateForm" type="submit" value="회원가입" >
@@ -381,16 +390,24 @@ export default {
 
 <style scoped>
 /* 페이지 1: 로그인 창 */
-
+.student-id-container {
+    display: flex;
+    align-items: center;
+    
+}
 html, body {
   height: 100%;
   margin: 0;
+  font-family: 'jua', sans-serif;
 }
+
+
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'jua', sans-serif;
 }
 
 /* 전체 컨테이너 스타일 */
@@ -401,6 +418,7 @@ body {
   align-items: center;
   min-height: 100vh;
   width: 100%; /* 컨테이너의 가로 폭을 100%로 설정 */
+  font-family: 'jua', sans-serif;
 }
 
 /* 제목 스타일 */
@@ -409,11 +427,12 @@ body {
   color: #333;
   font-size: 32px; /* 글꼴 크기를 필요에 맞게 조정 */
   margin-bottom: 20px;
+  font-family: 'jua', sans-serif;
 }
 
 /* 폼 래퍼 스타일 */
 .form-wrapper {
-  width: 80%; /* 폼 래퍼의 가로 폭을 80%로 설정 */
+  width: 100% /* 폼 래퍼의 가로 폭을 80%로 설정 */
 }
 
 /* 폼 스타일 */
@@ -422,11 +441,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'jua', sans-serif;
 }
 
 label {
     margin-bottom: 8px;
     font-weight: bold;
+    font-family: 'jua', sans-serif;
 }
 
 #check {
@@ -438,10 +459,12 @@ label {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s;
+    font-family: 'jua', sans-serif;
 }
 
 #check:hover {
     background-color: #0056b3;
+    font-family: 'jua', sans-serif;
 }
 
 input[type="text"],
@@ -454,10 +477,12 @@ select {
     border-radius: 4px;
     outline: none;
     font-size: 16px;
+    font-family: 'jua', sans-serif;
 }
 
 input[type="radio"] {
     margin-right: 5px;
+    font-family: 'jua', sans-serif;
 }
 
 input[type="submit"] {
@@ -468,10 +493,12 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-family: 'jua', sans-serif;
 }
 
 input[type="submit"]:hover {
     background-color: #0056b3;
+    font-family: 'jua', sans-serif;
 }
 
 .go-back {
@@ -482,30 +509,43 @@ input[type="submit"]:hover {
   color: gray;
   font-weight: bold;
   margin-top: 30px; /* 폼과 "돌아가기" 링크 사이에 간격 추가 */
+  font-family: 'jua', sans-serif;
 }
 
 .go-back:hover {
   text-decoration: underline;
   color: #333;
+  font-family: 'jua', sans-serif;
 }
 
 .check-button {
   background-color: #007BFF;
+
   color: white;
   padding: 10px 15px;
+  width: 80px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  font-family: 'jua', sans-serif;
+  margin-right: 8px; /* 입력 필드와 버튼 사이의 간격 */
 }
 
 .check-button:hover {
   background-color: #0056b3;
+  font-family: 'jua', sans-serif;
 }
 
 .action-group {
   display: flex;
   justify-content: space-between;
+  font-family: 'jua', sans-serif;
+}
+
+@font-face {
+  font-family: 'jua';
+  src:url(../../public/fonts/font.ttf)
 }
 
 /* 부트스트랩과 FontAwesome 라이브러리 임포트 */

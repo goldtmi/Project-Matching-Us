@@ -53,149 +53,89 @@
       </div>
     </nav>
 
-    <div class="container02">
-    <button @click="showPosts" :class="{ 'active': isShowingPosts }">내 게시글</button>
-    <button @click="showComments" :class="{ 'active': !isShowingPosts, 'purple-button': !isShowingPosts }">내 댓글</button>
-  </div>
-  
-
-    <!-- 댓글 데이터 표시 -->
-    <div class="comment-table" v-if="!isShowingPosts">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">내용</th>
-            <th scope="col">작성일</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(comment, index) in myComments" :key="index">
-            <th scope="row">{{ index + 1 }}</th>
-            <td>{{ comment.text }}</td>
-            <td>{{ comment.date }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <!-- 매칭 현황 -->
-    <div class="match-status">
-      <div v-if="isShowingPosts">
-        <div v-for="(post, index) in myPosts" :key="index" class="post-it">
-          <h3>{{ post.title }}</h3>
-          <p>내용: {{ post.content }}</p>
-        </div>
-      </div>
-      <div v-else>
-        <div v-for="(comment, index) in myComments" :key="index" class="post-it">
-          <h3>{{ comment.postTitle }}</h3>
-          <p>내 댓글: {{ comment.text }}</p>
-        </div>
-      </div>
-    </div>
+c
+    <div class="content">
+            <!-- 매칭을 신청한 사람들이 올려놓은 글들이 포스트잇의 형태로 들어가는 내용 -->
+            <section id="postItsContainer">
+              <div @click="goToMatchingApplyDetailMorePage" class="post-it female">      
+                <h3> 컴퓨터공학과 남학생 3명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 3명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+            </div>
+         
 
-    <div class="content" style="margin-top: -100px;">
-  <section id="postItsContainer" style="margin-top: -100px;" v-if="isShowingPosts">
-    <div v-for="(post, index) in posts" :key="index" :class="['post-it', post.gender]">
-      <h3>{{ post.title }}</h3>
-      <p>인원: {{ post.members }}</p>
-      <p>학과: {{ post.department }}</p>
-      <p>내용: {{ post.details }}</p>
+            <div class="post-it female">
+                <h3>토목공학과 남학생 3명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 3명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+               
+            </div>
+              <div class="post-it female">      
+                <h3>공업디자인전공 3명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 3명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+               
+            </div>
+
+  <div class="post-it female">      
+                <h3>식품공학전공 남학생 2명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 2명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+                
+            </div>
+
+  <div class="post-it female">      
+                <h3>ESFJ 남학생 1명과 미팅을 구합니다!</h3>
+                <p>인원: 1명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+                
+            </div>
+
+  <div class="post-it female">      
+                <h3>경제학과 남학생 5명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 5명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+                
+            </div>
+
+  <div class="post-it female">      
+                <h3>미디어커뮤니케이션학부 학생 4명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 4명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+               
+            </div>
+
+  <div class="post-it female">      
+                <h3>데이터정보과학부 남학생 3명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 3명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+                
+            </div>
+
+  <div class="post-it female">      
+                <h3> 전기공학부 남학생 6명과 친목 과팅을 구합니다!</h3>
+                <p>인원: 6명</p>
+                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
+                
+            </div>
+
+            </section>
+           
+        </div>
     </div>
-  </section>
-</div>
-  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isShowingPosts: true, // 기본적으로 게시글 표시
-      myComments: [
-        // 여기에 댓글 데이터를 가져와서 할당하는 로직을 추가해야 합니다.
-        // 예를 들어, 서버에서 댓글 데이터를 가져와서 할당하는 코드를 추가하세요.
-        // 예시 데이터:
-        {
-          text: "첫 번째 댓글",
-          date: "2023-08-13",
-        },
-        {
-          text: "두 번째 댓글",
-          date: "2023-08-14",
-        },
-        // ... 댓글 데이터 추가 ...
-      ],
-
-      // ... (other data properties) ...
-      posts: [
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        {
-          title: '포스트잇 제목 1',
-          members: '2명',
-          department: '공과대학 시스템경영공학부 산업경영공학전공',
-          details: '매칭 상세 내용 1...',
-          gender: 'male'
-        },
-        // ... (add more posts as needed) ...
-      ],
+  
+      
+    };
+  },
   methods: {
+    
     // 내 정보 페이지로 이동
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
@@ -209,6 +149,9 @@ export default {
     // 매칭 현황 페이지로 이동
     goToMatchingApplyDetailPage() {
       this.$router.push("/MatchingApplyDetailPage");
+    },
+    goToMatchingApplyDetailMorePage() {
+      this.$router.push("/MatchingApplyDetailMorePage");
     },
 
     goToMainPage() {
@@ -227,15 +170,13 @@ export default {
     showPosts() {
       this.isShowingPosts = true;
     },
-    
     showComments() {
       this.isShowingPosts = false;
-    }
+    },
   },
 };
-},
-}
 </script>
+
 
 <style scoped>
 body {
@@ -339,13 +280,8 @@ body {
     color: white; /* 버튼 텍스트 색상 흰색으로 설정 */
     font-size: 16px;
     transition: background-color 0.3s; /* 호버 효과 추가 */
-    cursor: pointer; /* 커서를 손가락 모양으로 변경하여 클릭 가능한 요소임을 나타냄 */
 }
-.basicMenu button.active {
-  background-color: #9370db;
-  /* 기존 스타일 유지 */
-  /* ... */
-}
+
 .basicMenu button:hover {
     background-color:#cccccc; /* 호버시 진한 회색으로 변경 */
 }
@@ -354,12 +290,18 @@ body {
   top: 95px; /* Adjust this value according to your fixed navbar height */
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  margin-left: 350px;
+  margin-right: 150px;
+}
+
 .container02 {
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center; /* 수직 중앙 정렬 */
-  height: 40vh; /* 화면 전체 높이 */
-  margin-left: 100px;
+  height: 10vh; /* 화면 전체 높이 */
 }
 
 /* 버튼 스타일링 (옵션) */
@@ -391,34 +333,62 @@ body {
 }
 
 .post-it {
-  width: 250px; /* Set the width to create a square */
-  height: 250px; /* Set the height to match the width */
-  margin: 10px;
-  padding: 10px;
-  box-shadow: 2px 2px 5px #aaa;
-  background-color: #fefabc; /* Default yellow color for post-it */
-  transition: transform 0.2s; /* Animation for hover effect */
+    width: 300px;
+    height: 250px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 4px 4px 10px #aaa;
+    font-size: 25px;
 }
+
 .post-it:hover {
-    transform: scale(1.05); /* Slightly enlarge the post-it on hover */
+    transform: scale(1.08); /* Slightly enlarge the post-it on hover */
 }
 
 .post-it.male {
     background-color: #deeeff; /* Blue color for male */
+    font-family: 'gangwon', sans-serif;
 }
 
 .post-it.female {
     background-color: #ffe4ee; /* Pink color for female */
+    font-family: 'gangwon', sans-serif;
 }
 
 #postItsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  gap: 20px;
   justify-items: center;
-  margin-left: 200px;
-  margin-bottom: 450px;
-  transition: margin-left 0.3s;
+  margin-right: 150px;
+  margin-left: 150px; /* Original margin-left value */
+  transition: margin-left 0.3s; /* Add transition effect for smooth animation */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.board-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.board-list li {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 calc(50% - 20px);
 }
 
 .board-list .btn {
@@ -442,21 +412,32 @@ body {
   margin: 20px 0;
   border: none; /* 테두리 제거 */
   
-} 
-
-.purple-button {
-  background-color: #9370DB; /* 보라색 배경색 */
-  color: white; /* 흰색 텍스트 색상 */
-  transition: background-color 0.3s, color 0.3s; /* 호버 및 토글 애니메이션 적용 */
 }
 
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+@font-face {
+  font-family: 'gangwon';
+  src:url(../../public/fonts/강원교육현옥샘.ttf)
+}
+
 @media screen and (max-width: 768px) {
     .side_nav{
       display: none;
     }
+  }
+  @media screen and (max-width: 768px) {
+
+      #postItsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-right: 150px;
+  margin-left: -150px; /* Original margin-left value */
+  transition: margin-left 0.3s; /* Add transition effect for smooth animation */
 }
+    }
 </style>

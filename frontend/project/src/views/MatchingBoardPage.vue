@@ -57,69 +57,67 @@
             <!-- 매칭을 신청한 사람들이 올려놓은 글들이 포스트잇의 형태로 들어가는 내용 -->
             <section id="postItsContainer">
                  <div @click="goToMatchingBoardDetailPage" class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
+                <h3>국어국문학과 박서준, 컴퓨터공학과 여학생 1명과 친목 미팅을 구합니다!</h3>
+                <p>인원: 1명</p>
+                <p>학과:국어국문학과 </p>
             </div>
 
             <div class="post-it female">
-                <h3>포스트잇 제목 2</h3>
-                <p>인원: 3명 이상</p>
-                <p>학과: 자유전공학부</p>
-                <p>내용: 매칭 상세 내용 2...</p>
+                <h3>부경대학교 식품영양학과에서 매칭 2명 구합니다!</h3>
+                <p>인원: 2명</p>
+                <p>학과: 식품영양학전공</p>
             </div>
               <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
+                <h3>캠퍼스 미팅! 박보검과 함께하는 컴퓨터공학과 여학생 1명과의 특별한 만남</h3>
+                <p>인원: 1명</p>
+                <p>학과: 유아교육과</p>
+                
+            </div>
+
+  <div class="post-it female">      
+                <h3>전기공학부 학생과 함께 빛나고 싶은 분 구합니다!"</h3>
                 <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
+                <p>학과: 전기공학부</p>
+               
+            </div>
+
+  <div class="post-it female">      
+                <h3>함께 디자인할 인생의 반쪽을 찾습니다!</h3>
+                <p>인원: 1명</p>
+                <p>학과: 공업디자인전공 </p>
+               
+            </div>
+
+  <div class="post-it female">      
+                <h3>경영과 연애, 둘 다 진지하게 생각하는 사람을 찾아요</h3>
+                <p>인원: 1명</p>
+                <p>학과:경영학과</p>
+                
             </div>
 
   <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
+                <h3>자유로운 전공, 자유로운 사랑을 찾는 사람!</h3>
+                <p>인원: 1명</p>
+                <p>학과: 자유전공학부</p>
+                
             </div>
 
   <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
+                <h3>토목공학과의 안정된 사랑을 원하시는 분!</h3>
+                <p>인원: 1명</p>
+                <p>학과: 토목공학전공 </p>
+                
             </div>
 
-  <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
-            </div>
-
-  <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
-            </div>
-
-  <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
-            </div>
-
-  <div class="post-it male">      
-                <h3>포스트잇 제목 1</h3>
-                <p>인원: 2명</p>
-                <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                <p>내용: 매칭 상세 내용 1...</p>
+  <div class="post-it female">      
+                <h3>경제적인 가치보다 인연의 가치를 중요시하는 분!</h3>
+                <p>인원: 1명</p>
+                <p>학과:경제학과</p>
+                
             </div>
 
             </section>
-            <!-- Add more postits as needed -->
+            <!-- 포스트잇추가 -->
         </div>
     </div>
 </template>
@@ -161,7 +159,6 @@ export default {
 }
 };
 </script>
-
 <style scoped>
 body {
     margin: 0;
@@ -305,8 +302,7 @@ body {
   padding-top: 100px;
   padding-left: 200px;
   margin: 20px 0;
-  border: none; /* 테두리 제거 */
-  
+  border: none; /* 테두리 제거 */ 
 }
 
 
@@ -318,6 +314,7 @@ body {
     box-shadow: 2px 2px 5px #aaa;
     background-color: #fefabc; /* Default yellow color for post-it */
     transition: transform 0.2s; /* Animation for hover effect */
+    font-size: 25px;
 }
 
 .post-it:hover {
@@ -326,18 +323,21 @@ body {
 
 .post-it.male {
     background-color: #deeeff; /* Blue color for male */
+    font-family: 'gangwon', sans-serif;
 }
 
 .post-it.female {
     background-color: #ffe4ee; /* Pink color for female */
+    font-family: 'gangwon', sans-serif;
 }
 
 #postItsContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 기본은 한 줄에 1개씩 */
-  gap: 20px; /* 그리드 아이템 간 간격 설정 */
-  justify-items: center; /* 그리드 내에서 아이템을 가운데로 정렬 */
-  margin-left: 150px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-left: 150px; /* Original margin-left value */
+  transition: margin-left 0.3s; /* Add transition effect for smooth animation */
 }
 
 @media (max-width: 768px) {
@@ -345,6 +345,12 @@ body {
     grid-template-columns: repeat(2, 1fr); /* 600px 이상 화면: 한 줄에 2개씩 */
   }
 }
+
+@font-face {
+  font-family: 'gangwon';
+  src:url(../../public/fonts/강원교육현옥샘.ttf)
+}
+
 
 @media screen and (max-width: 768px) {
   .side_nav {
