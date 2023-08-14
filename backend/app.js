@@ -107,23 +107,6 @@ app.get('/api/protectedRoute', authenticateToken, (req, res) => {
   });
 
 
-// server.js (백엔드 코드 예시)
-app.post('/api/check-duplicate', (req, res) => {
-  const studentID = req.body.studentID;
-
-  // 데이터베이스에서 studentID를 체크하는 로직
-  // 예를 들어, MySQL을 사용한다면:
-  connection.query('SELECT * FROM users WHERE studentID = ?', [studentID], (error, results) => {
-    if (error) throw error;
-
-    if (results.length > 0) {
-      res.json({ isDuplicate: true });
-    } else {
-      res.json({ isDuplicate: false });
-    }
-  });
-});
-
 // 게시물 추가 API 엔드포인트
 app.post('/api/addPost', (req, res) => {
   const { userID, matchingTitle, matchingContent, matchingType } = req.body;
