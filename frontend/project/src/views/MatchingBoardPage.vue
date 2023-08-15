@@ -159,7 +159,7 @@ export default {
 }
 };
 </script>
-<style scoped>
+<style scoped> 
 body {
     margin: 0;
     background-color: white;
@@ -320,6 +320,7 @@ body {
 .post-it:hover {
     transform: scale(1.05); /* Slightly enlarge the post-it on hover */
 }
+
 
 .post-it.male {
     background-color: #deeeff; /* Blue color for male */

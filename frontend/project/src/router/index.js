@@ -9,7 +9,8 @@ import MyInfoPage from '@/views/MyInfoPage.vue'; // 실제 경로에 맞게 수�
 import MatchingBoardPage from '@/views/MatchingBoardPage.vue';
 import MatchingBoardPage02 from '@/views/MatchingBoardPage02.vue'; // 실제 경로에 맞게 수정해야 합니다.
 import SignUpPage from '@/views/SignUpPage.vue'; // 실제 경로에 맞게 수정해야 합니다.
-import MatchingBoardDetailPage from '@/views/MatchingBoardDetailPage.vue'; // 실제 경로에 맞게 수정해야 합니다.
+import MatchingBoardDetailPage from '@/views/MatchingBoardDetailPage.vue'; 
+import MatchingBoardDetailPageTwo from '@/views/MatchingBoardDetailPageTwo.vue';// 실제 경로에 맞게 수정해야 합니다.
 import NoticePage from '@/views/NoticePage.vue';
 
 const routes= [
@@ -52,6 +53,10 @@ const routes= [
       {
         path: '/MatchingBoardDetailPage',
         component: MatchingBoardDetailPage
+      }, 
+      {
+        path: '/MatchingBoardDetailPageTwo',
+        component: MatchingBoardDetailPageTwo
       },
     
       {

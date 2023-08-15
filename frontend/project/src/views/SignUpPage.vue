@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <span class="MatchingUs">
-                    <img
+                    <img @click="goToLoginPage"
                     src="/image/logo.png"
                     class="img"
                     alt="매칭어스 로고"
@@ -29,12 +29,17 @@
       <input class="input" type="text" id="name" v-model="name" required style="margin-left: 18px " >
       <br>
 </div>
-      <div class="gender-group"> <!-- 성별 그룹을 나타내는 div 추가 -->
-        <label for="male">남자</label>
-        <input type="radio" id="male" name="gender" v-model="selectedGender" value="male" style="margin-left: 18px">
-        <label for="female">여자</label>
-        <input type="radio" id="female" name="gender" v-model="selectedGender" value="female" style="margin-left: 8px">
-      </div>
+
+<div class="gender-group">
+  <label for="male" class="gender-label">남자</label>
+  <input type="radio" id="male" name="gender" v-model="selectedGender" value="male">
+</div>
+<div class="gender-group">
+  <label for="female" class="gender-label">여자</label>
+  <input type="radio" id="female" name="gender" v-model="selectedGender" value="female">
+</div>
+
+
       <br> 
 
       <label for="residence">부산광역시 거주지 (학기중 거주지)</label>
@@ -389,19 +394,12 @@ export default {
 </script>
 
 <style scoped>
-/* 페이지 1: 로그인 창 */
-.student-id-container {
-    display: flex;
-    align-items: center;
-    
-}
+
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'jua', sans-serif;
 }
-
-
 
 body {
   display: flex;
@@ -410,95 +408,75 @@ body {
   font-family: 'jua', sans-serif;
 }
 
-/* 전체 컨테이너 스타일 */
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100%; /* 컨테이너의 가로 폭을 100%로 설정 */
+  width: 100%;
   font-family: 'jua', sans-serif;
 }
 
-/* 제목 스타일 */
-.container-title {
-  font-weight: bold;
-  color: #333;
-  font-size: 32px; /* 글꼴 크기를 필요에 맞게 조정 */
-  margin-bottom: 20px;
-  font-family: 'jua', sans-serif;
-}
-
-/* 폼 래퍼 스타일 */
 .form-wrapper {
-  width: 100% /* 폼 래퍼의 가로 폭을 80%로 설정 */
+  width: 100%;
 }
 
-/* 폼 스타일 */
 .form-wrapper form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-family: 'jua', sans-serif;
+  width: 100%; /* 추가된 속성: 폼의 가로 폭을 100%로 설정 */
 }
 
 label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-family: 'jua', sans-serif;
-}
-
-#check {
-    background-color: #007BFF;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-    font-family: 'jua', sans-serif;
-}
-
-#check:hover {
-    background-color: #0056b3;
-    font-family: 'jua', sans-serif;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-family: 'jua', sans-serif;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
 select {
-    margin-bottom: 15px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    font-size: 16px;
-    font-family: 'jua', sans-serif;
+  margin-bottom: 10px; /* 수정된 속성: 간격을 조정 */
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  font-family: 'jua', sans-serif;
+  width: 100%; /* 추가된 속성: 텍스트 필드의 가로 폭을 100%로 설정 */
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+}
+
+.gender-label {
+  margin-right: 10px; 
+  font-family: 'jua', sans-serif;
 }
 
 input[type="radio"] {
-    margin-right: 5px;
-    font-family: 'jua', sans-serif;
+  margin-left: 5px; /* 라벨과 라디오 버튼 사이의 간격 조정 */
+  margin-bottom: 10px;
+  font-family: 'jua', sans-serif;
 }
+
 
 input[type="submit"] {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'jua', sans-serif;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-    font-family: 'jua', sans-serif;
+  background-color: #F6E6F6;
+  color: #9370DB;
+  border: 1px solid #9370DB;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  font-family: 'jua', sans-serif;
 }
 
 .go-back {
@@ -508,7 +486,7 @@ input[type="submit"]:hover {
   text-decoration: none;
   color: gray;
   font-weight: bold;
-  margin-top: 30px; /* 폼과 "돌아가기" 링크 사이에 간격 추가 */
+  margin-top: 30px;
   font-family: 'jua', sans-serif;
 }
 
@@ -518,22 +496,13 @@ input[type="submit"]:hover {
   font-family: 'jua', sans-serif;
 }
 
+
 .check-button {
-  background-color: #007BFF;
-
-  color: white;
-  padding: 10px 15px;
-  width: 80px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  font-family: 'jua', sans-serif;
-  margin-right: 8px; /* 입력 필드와 버튼 사이의 간격 */
-}
-
-.check-button:hover {
-  background-color: #0056b3;
+  background-color: #F6E6F6;
+  color: #9370DB;
+  border: 1px solid #9370DB;
+  padding: 10px 20px;
+  border-radius: 5px;
   font-family: 'jua', sans-serif;
 }
 
@@ -545,10 +514,11 @@ input[type="submit"]:hover {
 
 @font-face {
   font-family: 'jua';
-  src:url(../../public/fonts/font.ttf)
+  src: url(../../public/fonts/font.ttf);
 }
 
 /* 부트스트랩과 FontAwesome 라이브러리 임포트 */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url("~@fortawesome/fontawesome-free/css/all.min.css");
 </style>
+

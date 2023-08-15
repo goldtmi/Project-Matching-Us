@@ -15,8 +15,8 @@
             <div class="welcome">환영합니다, <strong class="name">김혜빈</strong>님! <i class="fa-regular fa-face-smile"></i></div>
           </div>
           <!-- 로그아웃 버튼 -->
-          <button @click="logout" class="btn btn-outline-success" style="color: #9370DB; text-decoration: none;">
-            <i class="fa-solid fa-right-from-bracket"></i> LOG OUT!
+          <button @click="goToLoginPage" class="btn btn-outline-success" style="color: #9370DB; text-decoration: none;">
+            <i  class="fa-solid fa-right-from-bracket"></i> LOG OUT!
           </button>
         </div>
       </div>
@@ -51,7 +51,7 @@
       <section id="postDetailContainer">
           <div class="post-it male">
               <h3>국어국문학과 박서준, 컴퓨터공학과 여학생 1명과 친목 미팅을 구합니다!</h3>
-              <p>인원: 1명</p>
+              <p>인원: 2명</p>
               <p>학과: 국어국문학과</p>
               <p>내용: 안녕하세요! 부경대 국어국문학과 박서준입니다. 현재 연기와 학업을 병행하고 있는 4학년 학생이에요. 시스템경영공학부 여학생 1명과 함께 캠퍼스 내에서 즐거운 시간을 보내고 싶어 이렇게 글을 올립니다. 연예계 이야기, 전공, 취미 등 다양한 주제로 대화하며 서로를 알아가고 싶어요. 관심 있으신 분은 댓글로 연락 부탁드립니다. 함께 즐거운 시간 보내요!</p>
           </div>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="add-comment">
-          <textarea v-model="newComment" placeholder="댓글을 작성해주세요."></textarea>
+          <textarea class="textarea1" v-model="newComment" placeholder="댓글을 작성해주세요."></textarea>
           <button class="comment-button" @click="addComment">댓글 추가</button>
         </div>
 
@@ -87,6 +87,10 @@ export default {
     // 내 정보 페이지로 이동
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
+    },
+
+    goToLoginPage() {
+      this.$router.push("/");
     },
 
     // 매칭 신청 페이지로 이동
@@ -127,6 +131,10 @@ body {
 .MatchingUs {
     font-size: 24px; /* 로고 사이즈를 24px로 조정 */
     color: #9370DB;
+}
+
+textarea {
+ resize: none;
 }
 
 .navbar {
@@ -264,6 +272,7 @@ body {
 
 .comment-ul li {
   margin-bottom: 10px; /* 댓글 간격을 조정 */
+  
 }
 
 .comment-button {
@@ -278,27 +287,38 @@ body {
   margin: 10px;
   margin-top: 30px;
   padding: 10px;
+  
 }
 
+
 .add-comment {
-  display: flex; /* Flexbox를 활성화합니다 */
-  justify-content: space-between; /* 아이템들 사이에 공간을 균등하게 배분합니다 */
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
-  height: 70px;
+  
+}
+
+.textarea-wrapper {
+  position: relative;
+  
 }
 
 .add-comment textarea {
-  flex: 1; /* textarea가 가능한 한 많은 공간을 차지하게 합니다 */
   width: 100%;
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
   margin-bottom: 10px;
+  resize: vertical;
+  border: 1px solid #F6E6F6;
+}
+
+.add-comment textarea:focus {
+  border: 1px solid #F6E6F6;/* 클릭시에 변경할 border 색상 설정 */
 }
 
 .add-comment button {
-  width: 100px; /* 버튼의 너비 */
-  height: 60px; 
+  width: auto; /* Button width takes up available space */
   background-color: #F6E6F6;
   color: #9370DB;
   border: 1px solid #9370DB;
@@ -306,7 +326,13 @@ body {
   border-radius: 15px;
   cursor: pointer;
   font-size: 14px;
-  margin-bottom: 8px;
+  transition: background-color 0.3s;
+  align-self: flex-end;
+}
+
+.add-comment button:hover {
+  background-color: #9370DB;
+  color: white;
 }
 
 .warning-text {

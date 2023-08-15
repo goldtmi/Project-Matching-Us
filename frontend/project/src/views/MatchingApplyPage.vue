@@ -196,6 +196,10 @@ const postData = {
     goToMainPage() {
       this.$router.push("/MainPage");
     },
+
+    goToNoticePage() {
+      this.$router.push("/NoticePage");
+    },
   }
 }
 </script>

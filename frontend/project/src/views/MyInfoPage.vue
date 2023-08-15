@@ -53,7 +53,7 @@
       </div>
     </nav>
 
-    <div class="content-container">
+    <div class="content-container" style="margin-right: 200px; margin-left: 150px;">
       <div class="content">
         <form ref="myForm">
           <label for="studentID">학번 (ID)</label>
@@ -542,8 +542,6 @@ body {
   border-radius: 8px;
   background-color: #fff;
   width: 500px;
-  margin-left: 350px;
-  margin-right: 150px;
 }
 
 .content h2 {

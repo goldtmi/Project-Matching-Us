@@ -60,14 +60,16 @@
 
         <!-- 추가된 부분 -->
         <div class="main-content">
-        
-        <strong><h4><p><i class="fa-solid fa-check"></i>    MATCHING US 공지사항</p></h4></strong><br>
-        <p> 1. 왼쪽 상단 MATCHING US 로고를 누르시면 처음 로그인을 했을때 나오는 메인화면을 볼 수 있습니다. </p>
-        <p> 2. 내 정보에서는 회원가입 때 기입했던 정보의 확인 및 수정을 할 수 있으며, <br>
-        매칭 신청에서는 매칭을 신청 할 수 있습니다. 매칭 현황은 본인의 게시글 및 댓글을 확인하실 수 있습니다. </p>
-        <p> 3. 매칭을 신청하실때나, 댓글을 작성하실때에는 욕설은 자제해주시고 기본적인 예절을 지켜주시길 바랍니다. </p>
-        <p><i class="fa-regular fa-star"></i>   MATCHING US에서 여러분의 인연을 꼭 찾을 수 있기를 바랍니다! <i class="fa-regular fa-star"></i></p>
-    </div>
+  <strong><h4><p><i class="fa-solid fa-check"></i>    [필독!] MATCHING US 공지사항</p></h4></strong><br>
+  <p> 1. 왼쪽 상단 <span class="important-text">MATCHING US 로고</span>를 누르시면 처음 로그인을 했을때 나오는 <span class="important-text">메인화면</span>을 볼 수 있습니다. </p>
+  <p> 2. <span class="important-text">내 정보</span>에서는 회원가입 때 기입했던 <span class="important-text">정보의 확인 및 수정</span>을 할 수 있으며, <br>
+    <span class="important-text">매칭 신청</span>에서는 <span class="important-text">매칭을 신청</span> 할 수 있습니다. <span class="important-text">매칭 현황</span>은 <span class="important-text">본인의 게시글 및 댓글을 확인</span>하실 수 있습니다. </p>
+   <p>  3. 매칭을 신청하실 때에는 반드시 <span class="important-text">게시글 제목에 매칭 상세인원</span> (ex. 3:3 미팅 원합니다!) 를 기재해주시면 감사하겠습니다. <br>
+     (매칭 상세인원은 필수 기입사항이며, 그 외 MBTI, 나이, 원하는 상대방의 학과 등 기타사항은 자유롭게 기재해주세요!) <br>
+     또한 매칭 현황에서는 <span class="important-text">본인의 게시글, 댓글을 수정 및 삭제</span>할 수 있으니 참고바랍니다.</p>
+  <p> 4. 매칭을 신청하실때나, 댓글을 작성하실때에는 욕설은 자제해주시고 <span class="important-text">기본적인 예절</span>은 반드시 지켜주시길 부탁드립니다. </p>
+  <p><i class="fa-regular fa-star"></i>   MATCHING US에서 여러분의 인연을 꼭 찾을 수 있기를 바랍니다! <i class="fa-regular fa-star"></i></p>
+</div>
   </template>
   
   <script>
@@ -109,6 +111,11 @@
       background-color: white;
       font-family: 'jua', sans-serif;
   }
+
+  .important-text {
+  background-color: #FFFACD; /* 배경색을 노란색으로 변경 */
+  padding: 3px; /* 텍스트 주위에 여백 추가 */
+}
   
   .MatchingUs {
       font-size: 28px;

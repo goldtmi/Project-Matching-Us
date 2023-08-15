@@ -72,7 +72,7 @@
                 />
                 <div class="card-body">
                     <h5 class="card-title"><strong>3인 이상 매칭 게시판</strong></h5>
-                    <p class="card-text">3:3 이상의 대규모 만남을 원하시는 분들을 위한 게시판입니다. 과팅/미팅을 즐기고 싶으면 추천!</p>
+                    <p class="card-text">대규모 만남을 원하시는 분들을 위한 게시판입니다. 과팅/미팅을 즐기고 싶으면 추천!</p>
                     <!-- 매칭 보드 페이지로 이동 -->
                     <a @click="goToMatchingBoardPage02" class="btn btn-lavender"><strong>VIEW NOW!</strong></a>
                 </div>

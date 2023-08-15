@@ -1,13 +1,10 @@
 <template>
 
-  <form class="LoginPage" @submit.prevent="loginUser">
-    <span class="MatchingUs">
-                    <img
-                    src="/image/logo.png"
-                    class="img"
-                    alt="매칭어스 로고"
-                />
-                </span>
+<div class="LoginPageContainer">
+    <form class="LoginPage" @submit.prevent="loginUser">
+    <div class="logo-container">
+      <img src="/image/logo.png" class="logo" alt="매칭어스 로고" />
+    </div>
     <div class="int-area">
       <label for="id"></label>
       <input v-model="userId" type="text" name="id" id="id" placeholder="USER ID" />
@@ -16,16 +13,16 @@
     </div>
 
     <div class="btn-area">
-      <button @click="loginUser" type="submit" id="login-button" :disabled="!userId || !password">
-        LOGIN
-      </button>
-    </div>
+        <button @click="loginUser" type="submit" id="login-button" :disabled="!userId || !password">
+          LOGIN
+        </button>
+      </div>
 
     <div class="caption">
       <a href="#" @click="goToSignUpPage">회원가입</a>
     </div>
   </form>
-
+</div>
 </template>
 
 <script>
@@ -93,14 +90,19 @@ export default {
 </script>
 
 <style scoped>
-body {
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'HakgyoansimWoojuR', sans-serif;
+}
+
+.LoginPageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  margin: 0;
-  font-family: 'HakgyoansimWoojuR', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, white, #F6E6F6);
+  overflow: hidden; /* Prevent scrolling */
 }
 
 .LoginPage {
@@ -108,17 +110,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  z-index: 2; 
-  position: absolute;
+  position: fixed; /* Change to fixed */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%; /* Add this line */
+}
+
+.logo {
+  max-width: 70%;
+  height: auto;
+  display: inline-block; /* Add this line */
 }
 
 .LoginPage h1 {
@@ -136,15 +147,19 @@ body {
   margin-bottom: 15px;
 }
 
+
 .btn-area button {
-  width: 100%;
-  height: 50px;
+  width: 100%; /* Allow the button to expand to the parent width */
+  max-width: 300px; /* Set a maximum width for the button */
+  margin: 0 auto; /* Center the button horizontally */
+  padding: 15px; /* Adjust padding for spacing */
   background: #007bff;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .btn-area button:disabled {
@@ -162,11 +177,6 @@ body {
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
-}
-
-.img {
-  max-width: 100%;
-  height: auto;
 }
 
 @font-face {
