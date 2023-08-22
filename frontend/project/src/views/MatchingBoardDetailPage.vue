@@ -64,9 +64,9 @@
         </div>
 
         <div class="add-comment">
-          <textarea class="textarea1" v-model="newComment" placeholder="댓글을 작성해주세요."></textarea>
-          <button class="comment-button" @click="addComment">댓글 추가</button>
-        </div>
+        <textarea class="textarea1" v-model="content" placeholder="댓글을 작성해주세요."></textarea>
+        <button class="comment-button" @click="addComment">댓글 추가</button>
+    </div>
 
         <p class="warning-text" v-if="isCommentEmpty">추가할 내용이 없습니다.</p>
       </div>
@@ -80,8 +80,7 @@ export default {
   data() {
   return {
     postDetail: {},
-    comments: ['댓글1: 안녕하세요! 매칭을 원합니다.', '댓글2: 저도 참여하고 싶네요!'],
-    newComment: '',
+    content: '',
     isCommentEmpty: false
   };
 },
@@ -96,6 +95,29 @@ created() {
     });
 },
   methods: {
+    async addComment() {
+            const postID = this.postDetail.postID;
+            const loggedInUser = JSON.parse(localStorage.getItem('user'));
+            const userID = loggedInUser.id;
+
+            try {
+                const response = await axios.post('http://localhost:3001/api/addComment', {
+                    postID,
+                    userID,
+                    content: this.content // 변경된 부분
+                });
+
+                if (response.status === 201) {
+                    alert('댓글이 성공적으로 추가되었습니다.');
+                    this.content = ''; // 댓글 내용 초기화
+                }
+            } catch (error) {
+                console.error('댓글 추가 중 오류 발생:', error);
+                alert('댓글을 추가하는데 실패했습니다.');
+            }
+        },
+
+    
     // 내 정보 페이지로 이동
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
@@ -121,14 +143,6 @@ created() {
 
     goToNoticePage() {
       this.$router.push("/NoticePage");
-    },addComment() {
-      if (this.newComment.trim() !== '') {
-        this.comments.push(this.newComment);
-        this.newComment = '';
-        this.isCommentEmpty = false; // 내용이 있을 때 경고 문구 제거
-      } else {
-        this.isCommentEmpty = true; // 내용이 없을 때 경고 문구 표시
-      }
     }
   }
 }
