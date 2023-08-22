@@ -54,66 +54,19 @@
       </nav>
   
       <div class="content">
-              <!-- 매칭을 신청한 사람들이 올려놓은 글들이 포스트잇의 형태로 들어가는 내용 -->
-              <section id="postItsContainer">
-                   <div @click="goToMatchingBoardDetailPageTwo" class="post-it male">      
-                  <h3>산업경영공학과 박서준, 컴퓨터공학과 여학생 3명과 친목 미팅을 구합니다!</h3>
-                  <p>인원: 3명</p>
-                  <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-              </div>
-  
-              <div class="post-it female">
-                  <h3>박보영(22세)과 함께 영화를 감상하며 영화에 대한 이야기를 나눌 친구를 찾습니다.</h3>
-                  <p>인원: 4명</p>
-                  <p>학과: 영화과</p>
-              </div>
-                <div class="post-it male">      
-                  <h3>박보검과 함께 광안대교에서 로맨틱한 시간을 보내고 싶으신가요? 매칭 신청하세요!</h3>
-                  <p>인원: 4명</p>
-                  <p>학과: 국문학과 </p>
-                  
-              </div>
-  
+       <!-- 매칭을 신청한 사람들이 올려놓은 글들이 포스트잇의 형태로 들어가는 내용 -->
+
+            
+            <section id="postItsContainer">
+            <div v-for="post in posts" :key="post.postID" @click="goToMatchingBoardDetailPage(post.postID)" class="post-it" :class="{ male: post.gender === 'male', female: post.gender === 'female' }">
+                <h3>{{ post.matchingTitle }}</h3>
+                <p>{{ post.matchingType }}</p>
+                <p>{{ post.department }}</p>
+                <p>{{ post.matchingContent }}</p>
+                
+                
+            </div>
               
-      <div class="post-it male">
-          <h3>경영학과 이민호, 음악학과 여학생 2명과의 로맨틱 미팅을 구합니다!</h3>
-          <p>인원: 3명</p>
-          <p>학과: 경영학과</p>
-      </div>
-  
-      <div class="post-it female">
-          <h3>미술학과 김태리와 함께 예술 작품을 감상하며 의미 있는 하루를 보내고 싶으신 분, 지금 신청하세요!</h3>
-          <p>인원: 4명</p>
-          <p>학과: 미술학과</p>
-      </div>
-  
-      <div class="post-it male">
-          <h3>건축학과 송중기와 함께 밤하늘 아래에서 야경을 감상하며 특별한 시간을 보내고 싶으신 분들의 매칭 신청을 기다립니다!</h3>
-          <p>인원: 4명</p>
-          <p>학과: 건축학과</p>
-      </div>
-  
-    <div class="post-it female">      
-                  <h3>배수지와 함께 여유로운 하루를 보내고 싶으신 분은 댓글로 신청해주세요! 1</h3>
-                  <p>인원: 5명</p>
-                  <p>학과: 음악학과</p>
-                 
-              </div>
-  
-    <div class="post-it male">      
-                  <h3>이지은과 음악을 같이 들을 사람 구함</h3>
-                  <p>인원: 5명</p>
-                  <p>학과: 공과대학 시스템경영공학부 산업경영공학전공</p>
-                  
-              </div>
-  
-    <div class="post-it male">      
-                  <h3>정우성과 함께 사진 촬영을 하며 즐거운 시간을 보내고 싶어하는 분을 찾습니다.</h3>
-                  <p>인원: 5명</p>
-                  <p>학과: 미디어 커뮤니케이션학과</p>
-                  
-              </div>
-  
               </section>
               <!-- 포스트잇추가 -->
           </div>
@@ -121,8 +74,29 @@
   </template>
   
   <script>
+  import axios from 'axios';
   export default {
+    data() {
+    return {
+        posts: []
+    };
+},
+created() {
+    console.log("Attempting to fetch posts..."); // 이 로그를 추가
+    this.fetchPosts();
+},
     methods: {
+      fetchPosts() {
+      console.log("fetchPosts method called");
+        axios.get('http://localhost:3001/api/getPostsForMatchingType34')
+            .then(response => {
+              console.log("API Response:", response.data);  
+                this.posts = response.data;
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+    },
          // 내 정보 페이지로 이동
          goToMyInfoPage() {
         this.$router.push("/MyInfoPage");

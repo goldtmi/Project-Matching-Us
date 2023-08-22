@@ -24,8 +24,8 @@ function generateRandomString(length) {
 const dbConfig = {
     host: 'localhost', // 데이터베이스 호스트 주소
     user: 'root', // 데이터베이스 사용자 이름
-    password: 'smlab6488', // 데이터베이스 사용자 비밀번호
-    database: 'matchingus_db' // 데이터베이스 이름
+    password: ' ' , // 데이터베이스 사용자 비밀번호
+    database: 'matching-us' // 데이터베이스 이름
   };
   
   // MySQL 데이터베이스와 연결 생성
@@ -106,11 +106,9 @@ app.get('/api/protectedRoute', authenticateToken, (req, res) => {
     res.json({ message: 'Protected route accessed successfully!', user: req.user });
   });
 
-
 // 게시물 추가 API 엔드포인트
 app.post('/api/addPost', (req, res) => {
   const { userID, matchingTitle, matchingContent, matchingType } = req.body;
-
   const newPost = { userID, matchingTitle, matchingContent, matchingType };
   
   connection.query('INSERT INTO posts SET ?', newPost, (err, result) => {
@@ -123,7 +121,81 @@ app.post('/api/addPost', (req, res) => {
   });
 });
 
+app.get('/api/getPostsForMatchingType12', (req, res) => {
+  const query = `
+  SELECT posts.*, users.gender, users.department
+    FROM posts
+    JOIN users ON posts.userID = users.id
+    WHERE matchingType = '1-2인 매칭'
+  `;
+
+  connection.query(query, (err, results) => {
+      if (err) {
+          console.error('Error fetching the posts:', err.message);
+          res.status(500).json({ error: 'Failed to fetch the posts' });
+      } else {
+          res.json(results);
+      }
+  });
+});
+
+app.get('/api/getPostsForMatchingType34', (req, res) => {
+  const query = `
+  SELECT posts.*, users.gender, users.department
+    FROM posts
+    JOIN users ON posts.userID = users.id
+    WHERE matchingType = '3인 이상 매칭'
+  `;
+
+  connection.query(query, (err, results) => {
+      if (err) {
+          console.error('Error fetching the posts:', err.message);
+          res.status(500).json({ error: 'Failed to fetch the posts' });
+      } else {
+          res.json(results);
+      }
+  });
+});
+
+app.get('/api/getPostDetail/:postID', (req, res) => {
+  const postID = req.params.postID;
+  const query = `
+    SELECT posts.*, users.gender, users.department
+    FROM posts
+    JOIN users ON posts.userID = users.id
+    WHERE posts.postID = ?
+  `;
+  
+  connection.query(query, [postID], (err, results) => {
+    if (err) {
+      console.error('Error fetching the post detail:', err.message);
+      res.status(500).json({ error: 'Failed to fetch the post detail' });
+    } else {
+      res.json(results[0]); // 첫 번째 결과만 반환합니다.
+    }
+  });
+});
+
+app.get('/api/getPostDetail/:postID', (req, res) => {
+  const postID = req.params.postID;
+  const query = `
+    SELECT posts.*, users.gender, users.department
+    FROM posts
+    JOIN users ON posts.userID = users.id
+    WHERE posts.postID = ?
+  `;
+  
+  connection.query(query, [postID], (err, results) => {
+    if (err) {
+      console.error('Error fetching the post detail:', err.message);
+      res.status(500).json({ error: 'Failed to fetch the post detail' });
+    } else {
+      res.json(results[0]); // 첫 번째 결과만 반환합니다.
+    }
+  });
+});
+
 const port = 3001;
 app.listen(port, () => {
   console.log(`서버가 http://localhost:${port} 에서 실행 중입니다.`);
-});
+}); 
