@@ -47,14 +47,14 @@
       </nav>
       </div>
       
-      <div class="content">
-        <section id="postDetailContainer">
-            <div class="post-it male">
-                <h3>국어국문학과 박서준, 컴퓨터공학과 여학생 3명과 친목 미팅을 구합니다!</h3>
-                <p>인원: 3명</p>
-                <p>학과: 국어국문학과</p>
-                <p>내용: 안녕하세요! 부경대 국어국문학과 박서준입니다. 현재 연기와 학업을 병행하고 있는 4학년 학생이에요. 시스템경영공학부 여학생 1명과 함께 캠퍼스 내에서 즐거운 시간을 보내고 싶어 이렇게 글을 올립니다. 연예계 이야기, 전공, 취미 등 다양한 주제로 대화하며 서로를 알아가고 싶어요. 관심 있으신 분은 댓글로 연락 부탁드립니다. 함께 즐거운 시간 보내요!</p>
-            </div>
+          <div class="content">
+  <section id="postDetailContainer">
+      <div class="post-it" :class="{ male: postDetail.gender === 'male', female: postDetail.gender === 'female' }">
+    <h3>{{ postDetail.matchingTitle }}</h3>
+    <p>인원: {{ postDetail.matchingType }}</p>
+    <p>학과: {{ postDetail.department }}</p>
+    <p>내용: {{ postDetail.matchingContent }}</p>
+</div>
             <div class="comments-section">
           <!-- <h4>댓글</h4> -->
           <div class="comments-list">
@@ -74,15 +74,27 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-    return {
-      comments: ['댓글1: 안녕하세요! 매칭을 원합니다.', '댓글2: 저도 참여하고 싶네요!'],
-        newComment: '',
-        isCommentEmpty: false // 추가된 부분
-    };
-  },
+<script>
+import axios from 'axios';
+export default {
+  data() {
+  return {
+    postDetail: {},
+    comments: ['댓글1: 안녕하세요! 매칭을 원합니다.', '댓글2: 저도 참여하고 싶네요!'],
+    newComment: '',
+    isCommentEmpty: false
+  };
+},
+created() {
+    const postID = this.$route.params.postID;
+    axios.get(`http://localhost:3001/api/getPostDetail/${postID}`)
+    .then(response => {
+        this.postDetail = response.data;
+    })
+    .catch(error => {
+        console.error('Error fetching post details:', error);
+    });
+},
     methods: {
       // 내 정보 페이지로 이동
       goToMyInfoPage() {

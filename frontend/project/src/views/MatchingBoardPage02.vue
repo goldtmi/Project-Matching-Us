@@ -124,9 +124,9 @@ created() {
       goToNoticePage() {
         this.$router.push("/NoticePage");
       },
-          goToMatchingBoardDetailPageTwo() {
-        this.$router.push("/MatchingBoardDetailPageTwo");
-      }
+      goToMatchingBoardDetailPage(postID) {
+        this.$router.push({ name: 'MatchingBoardDetailPage', params: { postID: postID } });
+}
   
   }
   };

@@ -125,8 +125,8 @@ created() {
     goToNoticePage() {
       this.$router.push("/NoticePage");
     },
-        goToMatchingBoardDetailPage(postID) {
-    this.$router.push({ name: 'MatchingBoardDetailPage', params: { postID: postID } });
+    goToMatchingBoardDetailPage(postID) {
+      this.$router.push({ name: 'MatchingBoardDetailPage', params: { postID: postID } });
 }
   
 

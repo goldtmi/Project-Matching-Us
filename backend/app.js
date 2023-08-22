@@ -175,25 +175,22 @@ app.get('/api/getPostDetail/:postID', (req, res) => {
     }
   });
 });
+//댓글 추가 API
+app.post('/api/addComment', (req, res) => {
+  const { postID, userID, content } = req.body;
 
-app.get('/api/getPostDetail/:postID', (req, res) => {
-  const postID = req.params.postID;
-  const query = `
-    SELECT posts.*, users.gender, users.department
-    FROM posts
-    JOIN users ON posts.userID = users.id
-    WHERE posts.postID = ?
-  `;
+  const query = "INSERT INTO comments (postID, userID, content) VALUES (?, ?, ?)";
   
-  connection.query(query, [postID], (err, results) => {
-    if (err) {
-      console.error('Error fetching the post detail:', err.message);
-      res.status(500).json({ error: 'Failed to fetch the post detail' });
-    } else {
-      res.json(results[0]); // 첫 번째 결과만 반환합니다.
-    }
+  connection.query(query, [postID, userID, content], (err, result) => {
+      if (err) {
+          console.error('Error adding the comment:', err.message);
+          res.status(500).json({ error: 'Failed to add the comment' });
+      } else {
+          res.status(201).json({ message: 'Comment added successfully' });
+      }
   });
 });
+
 
 const port = 3001;
 app.listen(port, () => {
