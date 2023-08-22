@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <!-- 네비게이션 바 -->
     <!-- 상단 고정 네비게이션 바 -->
@@ -55,67 +55,18 @@
 
     <div class="content">
             <!-- 매칭을 신청한 사람들이 올려놓은 글들이 포스트잇의 형태로 들어가는 내용 -->
+
+            
             <section id="postItsContainer">
-                 <div @click="goToMatchingBoardDetailPage" class="post-it male">      
-                <h3>국어국문학과 박서준, 컴퓨터공학과 여학생 1명과 친목 미팅을 구합니다!</h3>
-                <p>인원: 1명</p>
-                <p>학과:국어국문학과 </p>
-            </div>
-
-            <div class="post-it female">
-                <h3>부경대학교 식품영양학과에서 매칭 2명 구합니다!</h3>
-                <p>인원: 2명</p>
-                <p>학과: 식품영양학전공</p>
-            </div>
-              <div class="post-it male">      
-                <h3>캠퍼스 미팅! 박보검과 함께하는 컴퓨터공학과 여학생 1명과의 특별한 만남</h3>
-                <p>인원: 1명</p>
-                <p>학과: 유아교육과</p>
+            <div v-for="post in posts" :key="post.postID" @click="goToMatchingBoardDetailPage(post.postID)" class="post-it" :class="{ male: post.gender === 'male', female: post.gender === 'female' }">
+                <h3>{{ post.matchingTitle }}</h3>
+                <p>{{ post.matchingType }}</p>
+                <p>{{ post.department }}</p>
+                <p>{{ post.matchingContent }}</p>
+                
                 
             </div>
-
-  <div class="post-it female">      
-                <h3>전기공학부 학생과 함께 빛나고 싶은 분 구합니다!"</h3>
-                <p>인원: 2명</p>
-                <p>학과: 전기공학부</p>
-               
-            </div>
-
-  <div class="post-it female">      
-                <h3>함께 디자인할 인생의 반쪽을 찾습니다!</h3>
-                <p>인원: 1명</p>
-                <p>학과: 공업디자인전공 </p>
-               
-            </div>
-
-  <div class="post-it female">      
-                <h3>경영과 연애, 둘 다 진지하게 생각하는 사람을 찾아요</h3>
-                <p>인원: 1명</p>
-                <p>학과:경영학과</p>
-                
-            </div>
-
-  <div class="post-it male">      
-                <h3>자유로운 전공, 자유로운 사랑을 찾는 사람!</h3>
-                <p>인원: 1명</p>
-                <p>학과: 자유전공학부</p>
-                
-            </div>
-
-  <div class="post-it male">      
-                <h3>토목공학과의 안정된 사랑을 원하시는 분!</h3>
-                <p>인원: 1명</p>
-                <p>학과: 토목공학전공 </p>
-                
-            </div>
-
-  <div class="post-it female">      
-                <h3>경제적인 가치보다 인연의 가치를 중요시하는 분!</h3>
-                <p>인원: 1명</p>
-                <p>학과:경제학과</p>
-                
-            </div>
-
+                 
             </section>
             <!-- 포스트잇추가 -->
         </div>
@@ -123,8 +74,30 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+  data() {
+    return {
+        posts: []
+    };
+},
+created() {
+    console.log("Attempting to fetch posts..."); // 이 로그를 추가
+    this.fetchPosts();
+},
+  
   methods: {
+     fetchPosts() {
+      console.log("fetchPosts method called");
+        axios.get('http://localhost:3001/api/getPostsForMatchingType12')
+            .then(response => {
+              console.log("API Response:", response.data);  
+                this.posts = response.data;
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+            });
+    },
        // 내 정보 페이지로 이동
        goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
@@ -152,9 +125,10 @@ export default {
     goToNoticePage() {
       this.$router.push("/NoticePage");
     },
-        goToMatchingBoardDetailPage() {
-      this.$router.push("/MatchingBoardDetailPage");
-    }
+        goToMatchingBoardDetailPage(postID) {
+    this.$router.push({ name: 'MatchingBoardDetailPage', params: { postID: postID } });
+}
+  
 
 }
 };

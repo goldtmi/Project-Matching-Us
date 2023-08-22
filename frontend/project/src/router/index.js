@@ -51,8 +51,10 @@ const routes= [
         component: SignUpPage
       },
       {
-        path: '/MatchingBoardDetailPage',
-        component: MatchingBoardDetailPage
+        path: "/MatchingBoardDetailPage/:postID",
+        name: "MatchingBoardDetailPage",
+        component: MatchingBoardDetailPage,
+        props: true
       }, 
       {
         path: '/MatchingBoardDetailPageTwo',
