@@ -191,6 +191,22 @@ app.post('/api/addComment', (req, res) => {
   });
 });
 
+// 게시물의 댓글 가져오기 API
+app.get('/api/getComments/:postID', (req, res) => {
+  const postID = req.params.postID;
+
+  const query = "SELECT * FROM comments WHERE postID = ?";
+  
+  connection.query(query, [postID], (err, comments) => {
+      if (err) {
+          console.error('Error fetching the comments:', err.message);
+          res.status(500).json({ error: 'Failed to fetch the comments' });
+      } else {
+          res.status(200).json(comments);
+      }
+  });
+});
+
 
 const port = 3001;
 app.listen(port, () => {

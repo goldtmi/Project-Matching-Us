@@ -59,8 +59,10 @@
         <!-- <h4>댓글</h4> -->
         <div class="comments-list">
           <ul class="comment-ul">
-            <li v-for="comment in comments" :key="comment">{{ comment }}</li>
-          </ul>
+  <li v-for="comment in comments" :key="comment.commentID">
+    {{ comment.content }}
+  </li>
+</ul>
         </div>
 
         <div class="add-comment">
@@ -79,6 +81,7 @@ import axios from 'axios';
 export default {
   data() {
   return {
+    comments: [],
     postDetail: {},
     content: '',
     isCommentEmpty: false
@@ -93,6 +96,13 @@ created() {
     .catch(error => {
         console.error('Error fetching post details:', error);
     });
+    axios.get(`http://localhost:3001/api/getComments/${postID}`)
+.then(response => {
+    this.comments = response.data;
+})
+.catch(error => {
+    console.error('Error fetching comments:', error);
+});
 },
   methods: {
     async addComment() {
@@ -118,6 +128,7 @@ created() {
         },
 
     
+
     // 내 정보 페이지로 이동
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
