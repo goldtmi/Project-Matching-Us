@@ -14,7 +14,7 @@
           <div class="navbar_right">
             <div class="navbar_welcome">
               <!-- 사용자 이름과 환영 메시지 -->
-              <div class="welcome">환영합니다, <strong class="name">김혜빈</strong>님! <i class="fa-regular fa-face-smile"></i></div>
+              <div class="welcome">환영합니다, <strong class="name">{{ user.name }}</strong>님! <i class="fa-regular fa-face-smile"></i></div>
             </div>
             <!-- 로그아웃 버튼 -->
             <button @click="logout" class="btn btn-outline-success" style="color: #9370DB; text-decoration: none;">
@@ -90,8 +90,11 @@
         isCommentEmpty: false // 추가된 부분
     };
   },
-    
-    
+  computed: {
+    user() {
+      return JSON.parse(localStorage.getItem('user')) || {};
+    }
+  },  
   methods: {
     editMatching() {
               // Redirect to the edit page or show the edit form
