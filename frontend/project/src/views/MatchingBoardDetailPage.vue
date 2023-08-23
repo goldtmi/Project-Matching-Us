@@ -12,7 +12,7 @@
         <div class="navbar_right">
           <div class="navbar_welcome">
             <!-- 사용자 이름과 환영 메시지 -->
-            <div class="welcome">환영합니다, <strong class="name">{{ user.name }}</strong>님! <i class="fa-regular fa-face-smile"></i></div>
+            <div class="welcome">환영합니다, <strong class="name">김혜빈</strong>님! <i class="fa-regular fa-face-smile"></i></div>
           </div>
           <!-- 로그아웃 버튼 -->
           <button @click="goToLoginPage" class="btn btn-outline-success" style="color: #9370DB; text-decoration: none;">
@@ -59,8 +59,10 @@
         <!-- <h4>댓글</h4> -->
         <div class="comments-list">
           <ul class="comment-ul">
-            <li v-for="comment in comments" :key="comment">{{ comment }}</li>
-          </ul>
+  <li v-for="comment in comments" :key="comment.commentID">
+    {{ comment.content }}
+  </li>
+</ul>
         </div>
 
         <div class="add-comment">
@@ -79,6 +81,7 @@ import axios from 'axios';
 export default {
   data() {
   return {
+    comments: [],
     postDetail: {},
     content: '',
     isCommentEmpty: false
@@ -93,12 +96,14 @@ created() {
     .catch(error => {
         console.error('Error fetching post details:', error);
     });
+    axios.get(`http://localhost:3001/api/getComments/${postID}`)
+.then(response => {
+    this.comments = response.data;
+})
+.catch(error => {
+    console.error('Error fetching comments:', error);
+});
 },
-computed: {
-    user() {
-      return JSON.parse(localStorage.getItem('user')) || {};
-    }
-  },  
   methods: {
     async addComment() {
             const postID = this.postDetail.postID;

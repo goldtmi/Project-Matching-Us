@@ -24,8 +24,8 @@ function generateRandomString(length) {
 const dbConfig = {
     host: 'localhost', // 데이터베이스 호스트 주소
     user: 'root', // 데이터베이스 사용자 이름
-    password: '1207' , // 데이터베이스 사용자 비밀번호
-    database: 'matchingus_db' // 데이터베이스 이름
+    password: '' , // 데이터베이스 사용자 비밀번호
+    database: 'matching-us' // 데이터베이스 이름
   };
   
   // MySQL 데이터베이스와 연결 생성
@@ -187,6 +187,22 @@ app.post('/api/addComment', (req, res) => {
           res.status(500).json({ error: 'Failed to add the comment' });
       } else {
           res.status(201).json({ message: 'Comment added successfully' });
+      }
+  });
+});
+
+// 게시물의 댓글 가져오기 API
+app.get('/api/getComments/:postID', (req, res) => {
+  const postID = req.params.postID;
+
+  const query = "SELECT * FROM comments WHERE postID = ?";
+  
+  connection.query(query, [postID], (err, comments) => {
+      if (err) {
+          console.error('Error fetching the comments:', err.message);
+          res.status(500).json({ error: 'Failed to fetch the comments' });
+      } else {
+          res.status(200).json(comments);
       }
   });
 });
