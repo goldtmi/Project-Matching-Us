@@ -208,8 +208,8 @@ export default {
       alert(data.message); // 백엔드에서 전달한 메시지를 알림으로 표시합니다.
 
       this.$router.push({
-        path: '/LoginPage',
-        query: { name: this.name } // Pass the user's name as a query parameter
+        path: '/',
+        // query: { name: this.name } // Pass the user's name as a query parameter
       });
     } else {
       // 회원가입이 실패한 경우

@@ -128,7 +128,6 @@ created() {
         },
 
     
-
     // 내 정보 페이지로 이동
     goToMyInfoPage() {
       this.$router.push("/MyInfoPage");
